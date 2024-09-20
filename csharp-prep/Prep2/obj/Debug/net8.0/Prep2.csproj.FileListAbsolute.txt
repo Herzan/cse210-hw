@@ -1,0 +1,14 @@
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\bin\Debug\net8.0\Prep2.exe
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\bin\Debug\net8.0\Prep2.deps.json
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\bin\Debug\net8.0\Prep2.runtimeconfig.json
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\bin\Debug\net8.0\Prep2.dll
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\bin\Debug\net8.0\Prep2.pdb
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.AssemblyInfoInputs.cache
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.AssemblyInfo.cs
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.dll
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\refint\Prep2.dll
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.pdb
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\Prep2.genruntimeconfig.cache
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep2\obj\Debug\net8.0\ref\Prep2.dll

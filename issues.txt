@@ -1,0 +1,1 @@
+Current document is outside of any project opened. it may limit IntelliSense experience.

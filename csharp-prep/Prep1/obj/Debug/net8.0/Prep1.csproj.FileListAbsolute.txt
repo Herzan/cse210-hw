@@ -12,3 +12,4 @@ C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep1\obj\Debug\net8.0\refint\Prep
 C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep1\obj\Debug\net8.0\Prep1.pdb
 C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep1\obj\Debug\net8.0\Prep1.genruntimeconfig.cache
 C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep1\obj\Debug\net8.0\ref\Prep1.dll
+C:\Users\DELL\Documents\cse210-hw\csharp-prep\Prep1\obj\Debug\net8.0\Prep1.sourcelink.json

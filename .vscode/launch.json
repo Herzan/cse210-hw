@@ -11,9 +11,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/csharp-prep/Prep5/bin/Debug/net8.0/Prep5.dll",
+            "program": "${workspaceFolder}/csharp-prep/Prep2/bin/Debug/net8.0/Prep2.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/csharp-prep/Prep5",
+            "cwd": "${workspaceFolder}/csharp-prep/Prep2",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

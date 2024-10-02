@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -100,3 +100,7 @@ namespace ScriptureMemorizer
         }
     }
 }
+
+// This program exceeds the core requirements by allowing users to load multiple scriptures from a file, select a random scripture for memorization, 
+// and utilizes encapsulation principles through multiple classes (Word, Reference, Scripture, ScriptureLibrary).
+// The program also maintains good design practices, including clear separation of responsibilities and handling user input effectively.

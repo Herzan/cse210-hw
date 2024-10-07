@@ -1,0 +1,15 @@
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.AssemblyInfoInputs.cache
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.AssemblyInfo.cs
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.sourcelink.json
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\bin\Debug\net8.0\Foundation1.exe
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\bin\Debug\net8.0\Foundation1.deps.json
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\bin\Debug\net8.0\Foundation1.runtimeconfig.json
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\bin\Debug\net8.0\Foundation1.dll
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\bin\Debug\net8.0\Foundation1.pdb
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.dll
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\refint\Foundation1.dll
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.pdb
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\Foundation1.genruntimeconfig.cache
+C:\Users\DELL\Documents\cse210-hw\foundation\Foundation1\obj\Debug\net8.0\ref\Foundation1.dll

@@ -1,119 +1,136 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 
-public class Word
+public class JournalEntry
 {
-    public string Text { get; private set; }
-    public bool IsHidden { get; private set; }
+    public string Date { get; }
+    public string Prompt { get; }
+    public string Response { get; }
 
-    public Word(string text)
+    public JournalEntry(string date, string prompt, string response)
     {
-        Text = text;
-        IsHidden = false;
-    }
-
-    public void Hide()
-    {
-        IsHidden = true;
+        Date = date;
+        Prompt = prompt;
+        Response = response;
     }
 
     public override string ToString()
     {
-        return IsHidden ? "____" : Text;
+        return $"{Date} | Prompt: {Prompt} | Response: {Response}";
     }
 }
-public class ScriptureReference
+
+public class Journal
 {
-    public string Book { get; private set; }
-    public int StartVerse { get; private set; }
-    public int? EndVerse { get; private set; }  // Nullable to handle single verses
-
-    public ScriptureReference(string book, int startVerse, int? endVerse = null)
+    private List<JournalEntry> entries = new List<JournalEntry>();
+    private readonly List<string> prompts = new List<string>
     {
-        Book = book;
-        StartVerse = startVerse;
-        EndVerse = endVerse;
+        "Who was the most interesting person I interacted with today?",
+        "What was the best part of my day?",
+        "How did I see the hand of the Lord in my life today?",
+        "What was the strongest emotion I felt today?",
+        "If I had one thing I could do over today, what would it be?"
+    };
+
+    public void AddEntry(string response)
+    {
+        string date = DateTime.Now.ToShortDateString();
+        string prompt = GetRandomPrompt();
+        entries.Add(new JournalEntry(date, prompt, response));
     }
 
-    public override string ToString()
+    public string GetRandomPrompt() // Changed to public
     {
-        return EndVerse == null ? $"{Book} {StartVerse}" : $"{Book} {StartVerse}-{EndVerse}";
-    }
-}
-public class Scripture
-{
-    public ScriptureReference Reference { get; private set; }
-    private List<Word> Words;
-
-    public Scripture(ScriptureReference reference, string text)
-    {
-        Reference = reference;
-        Words = text.Split(' ').Select(word => new Word(word)).ToList();
+        Random rand = new Random();
+        return prompts[rand.Next(prompts.Count)];
     }
 
-    public void HideRandomWords()
+    public void DisplayEntries()
     {
-        Random random = new Random();
-        int wordCount = Words.Count;
-        for (int i = 0; i < 3; i++)  // Hide 3 random words at a time
+        foreach (var entry in entries)
         {
-            int index = random.Next(wordCount);
-            Words[index].Hide();
+            Console.WriteLine(entry);
         }
     }
 
-    public bool AreAllWordsHidden()
+    public void SaveToFile(string filename)
     {
-        return Words.All(word => word.IsHidden);
-    }
-
-    public override string ToString()
-    {
-        string scriptureText = string.Join(" ", Words);
-        return $"{Reference}\n{scriptureText}";
-    }
-}
-class Program
-{
-    static void Main(string[] args)
-    {
-        ScriptureReference reference = new ScriptureReference("John", 3, 16);
-        Scripture scripture = new Scripture(reference, "For God so loved the world that he gave his one and only Son that whoever believes in him shall not perish but have eternal life.");
-
-        while (true)
+        using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            Console.Clear();
-            Console.WriteLine(scripture);
-
-            if (scripture.AreAllWordsHidden())
+            foreach (var entry in entries)
             {
-                Console.WriteLine("All words are hidden. Program will now exit.");
-                break;
+                outputFile.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
             }
+        }
+    }
 
-            Console.WriteLine("\nPress Enter to hide more words or type 'quit' to exit.");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "quit")
+    public void LoadFromFile(string filename)
+    {
+        entries.Clear();
+        string[] lines = File.ReadAllLines(filename);
+        foreach (string line in lines)
+        {
+            var parts = line.Split('|');
+            if (parts.Length == 3)
             {
-                break;
+                entries.Add(new JournalEntry(parts[0], parts[1], parts[2]));
             }
-
-            scripture.HideRandomWords();
         }
     }
 }
 
-List<Scripture> scriptures = new List<Scripture>
+public class Program
 {
-    new Scripture(new ScriptureReference("John", 3, 16), "For God so loved the world..."),
-    new Scripture(new ScriptureReference("Proverbs", 3, 5, 6), "Trust in the Lord with all your heart...")
-};
+    public static void Main(string[] args)
+    {
+        Journal journal = new Journal();
+        bool running = true;
 
-Random rnd = new Random();
-Scripture scripture = scriptures[rnd.Next(scriptures.Count)];
+        while (running)
+        {
+            Console.WriteLine("Journal Menu:");
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display journal entries");
+            Console.WriteLine("3. Save journal to file");
+            Console.WriteLine("4. Load journal from file");
+            Console.WriteLine("5. Quit");
+            Console.Write("Choose an option: ");
 
-string[] lines = File.ReadAllLines("scriptures.txt");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    string prompt = journal.GetRandomPrompt(); // Accessing the public method
+                    Console.WriteLine($"Prompt: {prompt}");
+                    Console.Write("Your response: ");
+                    string response = Console.ReadLine();
+                    journal.AddEntry(response);
+                    break;
+                case "2":
+                    journal.DisplayEntries();
+                    break;
+                case "3":
+                    Console.Write("Enter filename to save journal: ");
+                    string saveFile = Console.ReadLine();
+                    journal.SaveToFile(saveFile);
+                    break;
+                case "4":
+                    Console.Write("Enter filename to load journal: ");
+                    string loadFile = Console.ReadLine();
+                    journal.LoadFromFile(loadFile);
+                    break;
+                case "5":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+}
+
 
 /*
  * Exceeded requirements by adding:

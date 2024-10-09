@@ -38,9 +38,10 @@ public class Journal
         string date = DateTime.Now.ToShortDateString();
         string prompt = GetRandomPrompt();
         entries.Add(new JournalEntry(date, prompt, response));
+        Console.WriteLine("Entry added successfully.");
     }
 
-    public string GetRandomPrompt() // Changed to public
+    public string GetRandomPrompt()
     {
         Random rand = new Random();
         return prompts[rand.Next(prompts.Count)];
@@ -48,6 +49,12 @@ public class Journal
 
     public void DisplayEntries()
     {
+        if (entries.Count == 0)
+        {
+            Console.WriteLine("No entries found.");
+            return;
+        }
+
         foreach (var entry in entries)
         {
             Console.WriteLine(entry);
@@ -56,26 +63,48 @@ public class Journal
 
     public void SaveToFile(string filename)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        try
         {
-            foreach (var entry in entries)
+            using (StreamWriter outputFile = new StreamWriter(filename))
             {
-                outputFile.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
+                foreach (var entry in entries)
+                {
+                    outputFile.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
+                }
             }
+            Console.WriteLine("Journal saved successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving to file: {ex.Message}");
         }
     }
 
     public void LoadFromFile(string filename)
     {
-        entries.Clear();
-        string[] lines = File.ReadAllLines(filename);
-        foreach (string line in lines)
+        try
         {
-            var parts = line.Split('|');
-            if (parts.Length == 3)
+            entries.Clear();
+            if (!File.Exists(filename))
             {
-                entries.Add(new JournalEntry(parts[0], parts[1], parts[2]));
+                Console.WriteLine("File not found. Creating a new journal.");
+                return;
             }
+
+            string[] lines = File.ReadAllLines(filename);
+            foreach (string line in lines)
+            {
+                var parts = line.Split('|');
+                if (parts.Length == 3)
+                {
+                    entries.Add(new JournalEntry(parts[0], parts[1], parts[2]));
+                }
+            }
+            Console.WriteLine("Journal loaded successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading from file: {ex.Message}");
         }
     }
 }
@@ -89,7 +118,7 @@ public class Program
 
         while (running)
         {
-            Console.WriteLine("Journal Menu:");
+            Console.WriteLine("\nJournal Menu:");
             Console.WriteLine("1. Write a new entry");
             Console.WriteLine("2. Display journal entries");
             Console.WriteLine("3. Save journal to file");
@@ -101,7 +130,7 @@ public class Program
             switch (choice)
             {
                 case "1":
-                    string prompt = journal.GetRandomPrompt(); // Accessing the public method
+                    string prompt = journal.GetRandomPrompt();
                     Console.WriteLine($"Prompt: {prompt}");
                     Console.Write("Your response: ");
                     string response = Console.ReadLine();
@@ -130,8 +159,6 @@ public class Program
         }
     }
 }
-
-
 /*
  * Exceeded requirements by adding:
  * 1. File existence check before loading scriptures.
